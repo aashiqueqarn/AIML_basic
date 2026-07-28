@@ -35,3 +35,11 @@ for step in range(20):
     g = gradient(point[0], point[1])
     point = point - learning_rate * g
     print(f"step: {step}, g: {g}, point: {point}, f={function_example2(point[0], point[1]):.4f}")
+
+def function_example3(x):
+    return (3 * x + 1) ** 2
+
+X = 2.0
+analytical = 2 * (3 * X + 1) * 3
+numerical = numerical_derivative(function_example3, X)
+print(f"analytical: {analytical:.4f}, Numerical: {numerical:.4f}")
