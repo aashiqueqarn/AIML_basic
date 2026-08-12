@@ -41,3 +41,17 @@ mean = np.mean(data_1)
 sem = stats.sem(data_1) # standard error of the mean
 ci = stats.t.interval(0.95, df=len(data_1)-1, loc=mean, scale=sem)
 print(f"Mean : {mean:.3f}, 95% CI : {ci}")
+
+
+heads, tails = 8, 2
+p_values = np.linspace(0.01, 0.99, 100)
+likelihood = (p_values ** heads) * ((1 - p_values) ** tails)
+
+plt.plot(p_values, likelihood)
+plt.xlabel('p (probability of heads)')
+plt.ylabel('likelihood of observed data')
+plt.axvline(p_values[np.argmax(likelihood)], linestyle='--', color='r', label='MLE estimate')
+plt.legend()
+plt.savefig('likelihood_distribution.png')
+# plt.show()
+print("MLE Estimation: ", p_values[np.argmax(likelihood)])
