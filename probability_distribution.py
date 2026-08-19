@@ -60,10 +60,10 @@ raw_data = np.random.exponential(scale=1.0, size=100_000)
 plt.hist(raw_data, bins=50)
 plt.title("Original skewed distribution")
 plt.savefig('original_skewed_distribution.png')
-# plt.show()
+plt.show()
 
 sample_means = [np.mean(np.random.choice(raw_data, size=30)) for _ in range(1000)]
 plt.hist(sample_means, bins=50)
 plt.title("Distribution of sample means (Central Limit Theorem)")
 plt.savefig('sample_means_distribution.png')
-# plt.show()
+plt.show()
