@@ -3,7 +3,6 @@ import re
 import math
 from collections import Counter
 from statistics import mean, stdev
-from typing import Any
 
 DATA = [
     ("You’ve won a $500 gift card! Reply YES to claim now.", "spam"),
@@ -84,7 +83,7 @@ class ManualNaiveBayes:
             return (self.word_counts[label][word] + 1) / (self.total_words[label] + vocabulary_size_including_unk)
         return self.word_counts[label][word] / self.total_words[label]
 
-    def posterior(self, text: str, smoothing: bool) -> dict[Any, Any] | None:
+    def posterior(self, text: str, smoothing: bool) -> dict[str, float] | None:
         """Returning normalized P(class | message), or None if both MLE scores to zero."""
         scores = {}
         for label in self.classes:
