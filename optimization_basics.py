@@ -18,6 +18,6 @@ def f(y):
 def f_prime(y):
     return 4 * y ** 3 - 8 * y
 
-for y in np.linspace(-3, 3, 13):
-    if abs(f_prime(y)) < 0.5:
-        print(f"Near flat region around x = {y:.2f}, f'(x) = {f(y):.2f}")
+for z in np.linspace(-3, 3, 13):
+    if abs(f_prime(z)) < 0.5:
+        print(f"Near flat region around x = {z:.2f}, f'(x) = {f(z):.2f}")
