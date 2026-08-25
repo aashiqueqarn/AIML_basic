@@ -10,4 +10,14 @@ ax[0].set_title("Convex: One minimum")
 ax[1].plot(x, non_convex)
 ax[1].set_title("Non-convex: Two minima")
 plt.savefig('non_convex.png')
-plt.show()
+# plt.show()
+
+def f(y):
+    return y ** 4 - 4 * y ** 2
+
+def f_prime(y):
+    return 4 * y ** 3 - 8 * y
+
+for y in np.linspace(-3, 3, 13):
+    if abs(f_prime(y)) < 0.5:
+        print(f"Near flat region around x = {y:.2f}, f'(x) = {f(y):.2f}")
