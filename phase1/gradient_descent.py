@@ -1,5 +1,10 @@
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+RESULT_DIR = os.path.join(os.path.dirname(__file__), "result_image")
+os.makedirs(RESULT_DIR, exist_ok=True)
 
 np.random.seed(0)
 X = np.linspace(0, 10, 50)
@@ -46,5 +51,5 @@ plt.title("Final Model Fit")
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig("gradient_descent_noisy.png")
+plt.savefig(os.path.join(RESULT_DIR, "gradient_descent_noisy.png"))
 plt.show()

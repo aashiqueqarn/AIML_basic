@@ -1,5 +1,10 @@
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+RESULT_DIR = os.path.join(os.path.dirname(__file__), "result_image")
+os.makedirs(RESULT_DIR, exist_ok=True)
 
 x = np.linspace(-3, 3, 200)
 convex = x ** 2
@@ -9,7 +14,7 @@ ax[0].plot(x, convex)
 ax[0].set_title("Convex: One minimum")
 ax[1].plot(x, non_convex)
 ax[1].set_title("Non-convex: Two minima")
-plt.savefig('non_convex.png')
+plt.savefig(os.path.join(RESULT_DIR, 'non_convex.png'))
 # plt.show()
 
 def f(y):
@@ -46,4 +51,4 @@ for lr in [0.01, 0.1, 0.9, 1.01]:
     plt.title(f"Learning rate = {lr}")
     plt.xlabel("Iteration")
     plt.ylabel("Loss")
-    plt.savefig(f"loss_{lr}.png")
+    plt.savefig(os.path.join(RESULT_DIR, f"loss_{lr}.png"))

@@ -1,13 +1,18 @@
+import os
+
 from scipy import stats
 import numpy as np
 from matplotlib import pyplot as plt
+
+RESULT_DIR = os.path.join(os.path.dirname(__file__), "result_image")
+os.makedirs(RESULT_DIR, exist_ok=True)
 
 print(stats.binom.pmf(k=3, n=5, p=0.5))
 
 x = np.linspace(-4, 4, 200)
 plt.plot(x, stats.norm.pdf(x, loc=0, scale=1))
 plt.title('Normal Distribution')
-plt.savefig('normal_distribution.png')
+plt.savefig(os.path.join(RESULT_DIR, 'normal_distribution.png'))
 # plt.show()
 
 np.random.seed(42)
@@ -52,18 +57,18 @@ plt.xlabel('p (probability of heads)')
 plt.ylabel('likelihood of observed data')
 plt.axvline(p_values[np.argmax(likelihood)], linestyle='--', color='r', label='MLE estimate')
 plt.legend()
-plt.savefig('likelihood_distribution.png')
+plt.savefig(os.path.join(RESULT_DIR, 'likelihood_distribution.png'))
 # plt.show()
 print("MLE Estimation: ", p_values[np.argmax(likelihood)])
 
 raw_data = np.random.exponential(scale=1.0, size=100_000)
 plt.hist(raw_data, bins=50)
 plt.title("Original skewed distribution")
-plt.savefig('original_skewed_distribution.png')
+plt.savefig(os.path.join(RESULT_DIR, 'original_skewed_distribution.png'))
 plt.show()
 
 sample_means = [np.mean(np.random.choice(raw_data, size=30)) for _ in range(1000)]
 plt.hist(sample_means, bins=50)
 plt.title("Distribution of sample means (Central Limit Theorem)")
-plt.savefig('sample_means_distribution.png')
+plt.savefig(os.path.join(RESULT_DIR, 'sample_means_distribution.png'))
 plt.show()

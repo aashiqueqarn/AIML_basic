@@ -1,11 +1,17 @@
+import os
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+RESULT_DIR = os.path.join(os.path.dirname(__file__), "result_image")
+os.makedirs(RESULT_DIR, exist_ok=True)
+
+
 def svd_scratch():
     try:
-        image_color = mpimg.imread("demoImage.png")
+        image_color = mpimg.imread(os.path.join(RESULT_DIR, "demoImage.png"))
     except FileNotFoundError:
         print("File not found")
         exit()
@@ -22,7 +28,7 @@ def svd_scratch():
     plt.subplot(2, 2, 2)
     plt.imshow(compressed, cmap="gray")
     plt.title(f"Compressed (k={k})")
-    plt.savefig("compressed_updated.png")
+    plt.savefig(os.path.join(RESULT_DIR, "compressed_updated.png"))
     plt.show()
 
 def pca_scratch(X, n_components):
@@ -49,7 +55,7 @@ def pca_with_database():
     plt.legend()
     plt.grid(True, linestyle="--", alpha=0.5)
     plt.tight_layout()
-    plt.savefig("pca.png")
+    plt.savefig(os.path.join(RESULT_DIR, "pca.png"))
     plt.show()
 
 if __name__ == "__main__":
